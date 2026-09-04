@@ -6,6 +6,7 @@ public class Solution {
     public static void main(String[] args){
         System.out.println(isValid("()[]{}"));
     }
+    
     public static boolean isValid(String s) {
         // 最初の一文字を、stackとして積み上げる（この時点で、終わりカッコであれば、falseを返す）
         // 2文字目からは、以下の通り
@@ -17,14 +18,9 @@ public class Solution {
         Stack<Character> brackets = new Stack<>();
         for(int i=0;i<s.length();i++){
             char bracket = s.charAt(i);
-            
-            System.out.println(bracket+"について、処理します");
-
 
             if(bracket == '(' || bracket == '[' || bracket =='{'){
                 brackets.push(bracket);
-                System.out.println("処理1");
-                System.out.println("stackの状態"+brackets);
                 continue;
             }
             
@@ -35,7 +31,6 @@ public class Solution {
             }
  
             char top_bracket = brackets.peek();
-            System.out.println("top_bracketの値"+top_bracket);
 
             if (bracket == ')' && top_bracket == '(') {
                 brackets.pop();
@@ -46,7 +41,6 @@ public class Solution {
             } else {
                 brackets.push(bracket);
             }
-        System.out.println("stackの状態"+brackets);
         }
         
         if(brackets.empty()){
